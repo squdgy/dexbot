@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "bot": "node index.js",
+    "bot": "node ./src/index.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --fix --ext .js",
     "test": "mocha './test/**/*.test.js'"

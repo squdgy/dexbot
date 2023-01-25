@@ -1,6 +1,6 @@
 import { BigNumber } from 'bignumber.js';
 import chai from 'chai';
-import strategy from '../../strategies/marketmaker.js';
+import strategy from '../../src/strategies/marketmaker.js';
 
 const { assert } = chai;
 const { createBuyOrder, createSellOrder } = strategy.internals;

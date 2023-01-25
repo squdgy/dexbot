@@ -172,7 +172,7 @@ const trade = async () => {
 
     const marketDetails = await getMarketDetails();
     const preparedOrders = await prepareOrders(marketDetails, openOrders);
-    await placeOrders(preparedOrders);
+    // await placeOrders(preparedOrders);
   } catch (error) {
     logger.error(error.message);
   }
