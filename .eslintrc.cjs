@@ -1,7 +1,7 @@
 module.exports = {
   env: {
+    node: true,
     browser: false,
-    es2021: true,
     mocha: true,
   },
   extends: [
@@ -15,13 +15,21 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
     project: './tsconfig.json',
   },
   plugins: ['mocha', '@typescript-eslint'],
   rules: {
     // override to not flag .js imports as errors
-    'import/extensions': ['error', 'ignorePackages', { js: 'always' }],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        'js': 'never',
+        'jsx': 'never',
+        'ts': 'never',
+        'tsx': 'never'
+      }
+    ],
     'mocha/no-skipped-tests': 'error',
     'mocha/no-exclusive-tests': 'error',
   },
@@ -37,7 +45,6 @@ module.exports = {
       typescript: {
         project: ['tsconfig.json']
       },
-    },
-    'import/extensions': ['.js', '.jsx', '.tsx', '.ts']
+    }
   },
 };

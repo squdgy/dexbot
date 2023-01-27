@@ -11,7 +11,7 @@
     "test": "mocha './test/**/*.test.js'",
     "start": "node ./build/index.js",
     "tsc": "tsc",
-    "postinstall": "npm run tsc",
+    "postinstall": "npm run tsc"
   },
   "keywords": [
     "proton",
