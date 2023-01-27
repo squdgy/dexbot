@@ -71,7 +71,7 @@ const createBuyOrder = (marketDetails, index) => {
   const startPrice = lowestAsk.plus(highestBid).dividedBy(2);
 
   const buyPrice = (bigMinSpread.times(0 - (index + 1)).plus(1))
-    .times(Math.min(lastSalePrice, startPrice)).decimalPlaces(askPrecision, BN.ROUND_DOWN);
+    .times(Math.min(+lastSalePrice, +startPrice)).decimalPlaces(askPrecision, BN.ROUND_DOWN);
   const { adjustedTotal } = getQuantityAndAdjustedTotal(
     +buyPrice,
     minOrder,
@@ -101,7 +101,7 @@ const createSellOrder = (marketDetails, index) => {
   const startPrice = lowestAsk.plus(highestBid).dividedBy(2);
 
   const sellPrice = (bigMinSpread.times(0 + (index + 1)).plus(1))
-    .times(Math.max(lastSalePrice, startPrice)).decimalPlaces(askPrecision, BN.ROUND_UP);
+    .times(Math.max(+lastSalePrice, +startPrice)).decimalPlaces(askPrecision, BN.ROUND_UP);
   const { quantity } = getQuantityAndAdjustedTotal(
     +sellPrice,
     minOrder,
@@ -172,7 +172,7 @@ const trade = async () => {
 
     const marketDetails = await getMarketDetails();
     const preparedOrders = await prepareOrders(marketDetails, openOrders);
-    // await placeOrders(preparedOrders);
+    await placeOrders(preparedOrders);
   } catch (error) {
     logger.error(error.message);
   }
@@ -180,6 +180,7 @@ const trade = async () => {
 
 const strategy = {
   trade,
+  internals: null,
 };
 
 // export some internal function solely to test them
