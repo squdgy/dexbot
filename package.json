@@ -23,7 +23,7 @@
   "dependencies": {
     "@proton/js": "^27.9.0",
     "bignumber.js": "^9.1.1",
-    "config": "^3.3.8",
+    "config": "^4.0.0",
     "winston": "^3.8.2"
   },
   "devDependencies": {
